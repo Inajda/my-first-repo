@@ -3,9 +3,7 @@ import sys
 import requests
 
 if __name__ == "__main__":
-    url = "https://api.github.com/user"
-    response = requests.get(url, auth=(sys.argv[1], sys.argv[2]))
-
-    if response.status_code == 200:
-        print(response.json().get("id"))
+    r = requests.get("https://api.github.com/user", auth=(sys.argv[1], sys.argv[2]))
+    if r.status_code == 200:
+        sys.stdout.write(str(r.json().get("id")))
 
